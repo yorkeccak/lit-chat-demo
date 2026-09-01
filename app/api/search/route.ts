@@ -6,7 +6,7 @@ export async function POST(req: Request) {
 
   const response = await valyu.search(query, {
     maxNumResults: 100,
-    // Open-access PubMed + licensed Wiley Health & Life Sciences full text
+    // Open-access PubMed + paywalled journal content (Wiley HLS, if your account has access)
     includedSources: ["valyu/valyu-pubmed", "wiley/wiley-hls"],
     includeAbstracts: true, // search the full PubMed abstract corpus
   });
