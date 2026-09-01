@@ -3,6 +3,7 @@
 import { useChat } from "@ai-sdk/react";
 import { useState } from "react";
 import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 type Paper = {
   title: string;
@@ -165,7 +166,7 @@ export default function Home() {
               }}
             >
               {m.parts.map((part, i) => {
-                if (part.type === "text") return <Markdown key={i}>{part.text}</Markdown>;
+                if (part.type === "text") return <Markdown key={i} remarkPlugins={[remarkGfm]}>{part.text}</Markdown>;
                 if (part.type === "tool-searchLiterature")
                   return (
                     <div key={i} style={{ fontSize: 12.5, color: "#888", fontStyle: "italic", margin: "4px 0" }}>
@@ -238,7 +239,7 @@ export default function Home() {
               <>
                 <h4 style={{ margin: "14px 0 6px", fontSize: 13.5 }}>Abstract</h4>
                 <div style={{ fontSize: 13.5, lineHeight: 1.55 }}>
-                  <Markdown>{preview.abstract}</Markdown>
+                  <Markdown remarkPlugins={[remarkGfm]}>{preview.abstract}</Markdown>
                 </div>
               </>
             )}
@@ -246,7 +247,7 @@ export default function Home() {
               <>
                 <h4 style={{ margin: "14px 0 6px", fontSize: 13.5 }}>Relevant passages (from search)</h4>
                 <div style={{ fontSize: 13, lineHeight: 1.55, color: "#444" }}>
-                  <Markdown>{preview.content.slice(0, 2500)}</Markdown>
+                  <Markdown remarkPlugins={[remarkGfm]}>{preview.content.slice(0, 2500)}</Markdown>
                 </div>
               </>
             )}

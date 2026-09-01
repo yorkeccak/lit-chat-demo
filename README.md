@@ -1,5 +1,7 @@
 # Lit Chat Demo
 
+![Lit Chat Demo](docs/screenshot.png)
+
 Minimal literature search + chat demo built with Next.js, the Vercel AI SDK, and the [Valyu API](https://docs.valyu.ai).
 
 **Flow:** quick search over PubMed + Wiley HLS → select papers → chat grounded in exactly those papers. The model can also call Valyu search mid-conversation to pull new evidence.
@@ -20,7 +22,7 @@ Create `.env.local`:
 
 ```
 VALYU_API_KEY=your_valyu_key      # platform.valyu.ai
-OPENAI_API_KEY=your_openai_key
+OPENAI_API_KEY=your_openai_key   # or set ANTHROPIC_API_KEY to use Claude Sonnet 5
 ```
 
 Run:
@@ -38,4 +40,4 @@ Open http://localhost:3000, search a topic, tick some papers, and chat.
 - `app/api/chat/route.ts` - streaming chat: pinned papers + Valyu as a tool call
 - `app/page.tsx` - the whole UI
 
-Model is `gpt-4o-mini` - swap it in `app/api/chat/route.ts`.
+Model: Claude Sonnet 5 if `ANTHROPIC_API_KEY` is set, otherwise OpenAI `gpt-5.6-luna`. Swap in `app/api/chat/route.ts`.
