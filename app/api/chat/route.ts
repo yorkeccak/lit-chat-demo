@@ -38,7 +38,7 @@ export async function POST(req: Request) {
     .join("\n\n");
 
   const result = streamText({
-    model: openai("gpt-4o-mini"),
+    model: openai("gpt-5.6-luna"),
     system:
       `You are a medical literature assistant. The user has selected the ` +
       `following papers. Answer questions using ONLY these papers unless the ` +

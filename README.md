@@ -38,4 +38,4 @@ Open http://localhost:3000, search a topic, tick some papers, and chat.
 - `app/api/chat/route.ts` - streaming chat: pinned papers + Valyu as a tool call
 - `app/page.tsx` - the whole UI
 
-Model is `gpt-4o-mini` - swap it in `app/api/chat/route.ts`.
+Model is `gpt-5.6-luna` - swap it in `app/api/chat/route.ts`.
