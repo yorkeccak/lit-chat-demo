@@ -8,8 +8,14 @@ import {
   type UIMessage,
 } from "ai";
 import { openai } from "@ai-sdk/openai";
+import { anthropic } from "@ai-sdk/anthropic";
 import { z } from "zod";
 import { valyu, type Paper } from "@/lib/valyu";
+
+// Anthropic (Sonnet 5) when a key is provided, otherwise OpenAI
+const model = process.env.ANTHROPIC_API_KEY
+  ? anthropic("claude-sonnet-5")
+  : openai("gpt-5.6-luna");
 
 export async function POST(req: Request) {
   const { messages, papers }: { messages: UIMessage[]; papers: Paper[] } =
@@ -38,7 +44,7 @@ export async function POST(req: Request) {
     .join("\n\n");
 
   const result = streamText({
-    model: openai("gpt-5.6-luna"),
+    model,
     system:
       `You are a medical literature assistant. The user has selected the ` +
       `following papers. Answer questions using ONLY these papers unless the ` +
