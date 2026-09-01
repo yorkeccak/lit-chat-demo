@@ -22,8 +22,8 @@ export async function POST(req: Request) {
     await req.json();
 
   // 1. The user's selected papers are PINNED into context. Per-paper rules:
-  //    - Wiley HLS: abstract + relevant passages from search (never fetched -
-  //      full-text scraping is against licence terms)
+  //    - Paywalled journal sources (e.g. Wiley HLS): abstract + relevant
+  //      passages from search only - paywalled content is never scraped
   //    - Open access with fetched full text: the full paper (capped)
   //    - Closed access (content === abstract): abstract only
   const pinnedPapers = papers

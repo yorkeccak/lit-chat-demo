@@ -58,9 +58,9 @@ export default function Home() {
     next.has(i) ? next.delete(i) : next.add(i);
     setSelected(next);
 
-    // On select: open-access, non-Wiley papers get their full text fetched
-    // once via the Contents API. Wiley HLS is never fetched (licence terms) -
-    // its abstract + relevant passages from search are used instead.
+    // On select: open-access papers get their full text fetched
+    // once via the Contents API. Paywalled journal sources are never fetched -
+    // their abstract + relevant passages from search are used instead.
     const p = papers[i];
     if (next.has(i) && isOpenAccess(p) && !isWiley(p) && !p.fullContent) {
       setFetching((f) => new Set(f).add(i));
@@ -104,7 +104,7 @@ export default function Home() {
           </form>
         </div>
         <div style={{ flex: 1, overflowY: "auto", padding: "0 20px 20px" }}>
-          {searching && <p style={{ color: "#888" }}>Searching PubMed + Wiley HLS…</p>}
+          {searching && <p style={{ color: "#888" }}>Searching literature…</p>}
           {papers.map((p, i) => (
             <div
               key={i}
@@ -125,7 +125,7 @@ export default function Home() {
                 </div>
                 <div style={{ fontSize: 11, color: "#999", marginBottom: 2 }}>
                   {isWiley(p)
-                    ? "Wiley HLS · licensed passages"
+                    ? "paywalled journal · search passages"
                     : fetching.has(i)
                       ? "fetching full text…"
                       : p.fullContent
