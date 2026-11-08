@@ -11,17 +11,24 @@
     "@ai-sdk/openai": "^4.0.53",
     "@ai-sdk/react": "^4.0.90",
     "ai": "^7.0.87",
-    "next": "^16.3.4",
-    "react": "^19.2.8",
-    "react-dom": "^19.2.8",
+    "next": "^16.4.5",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
     "react-markdown": "^10.1.0",
     "remark-gfm": "^4.0.1",
     "valyu-js": "^2.10.1",
-    "zod": "^4.5.4"
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@types/node": "^26.4.0",
-    "@types/react": "^19.2.18",
+    "@types/react": "^19.3.0",
     "typescript": "^7.0.2"
+  },
+  "pnpm": {
+    "overrides": {
+      "follow-redirects@<1.16.2": "^1.16.3",
+      "source-map-js@<1.2.2": "^1.2.2",
+      "undici@>=7.0.0 <7.30.1": "^7.30.2"
+    }
   }
 }
